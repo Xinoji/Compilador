@@ -1,0 +1,68 @@
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\bin\Debug\net6.0-windows\compilador.exe
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\bin\Debug\net6.0-windows\compilador.deps.json
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\bin\Debug\net6.0-windows\compilador.runtimeconfig.json
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\bin\Debug\net6.0-windows\compilador.dll
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\bin\Debug\net6.0-windows\compilador.pdb
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\compilador.csproj.AssemblyReference.cache
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\compilador.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\compilador.AssemblyInfoInputs.cache
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\compilador.AssemblyInfo.cs
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\compilador.csproj.CoreCompileInputs.cache
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\compilador.dll
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\refint\compilador.dll
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\compilador.pdb
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\compilador.genruntimeconfig.cache
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\ref\compilador.dll
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\compilador.Form1.resources
+C:\Users\jonat\Documents\universidad\Semestres pasados\daTOS 2\Codigo\compilador\obj\Debug\net6.0-windows\compilador.csproj.GenerateResource.cache
+H:\compilador\obj\Debug\net6.0-windows\compilador.csproj.AssemblyReference.cache
+H:\compilador\obj\Debug\net6.0-windows\compilador.Form1.resources
+H:\compilador\obj\Debug\net6.0-windows\compilador.csproj.GenerateResource.cache
+H:\compilador\obj\Debug\net6.0-windows\compilador.GeneratedMSBuildEditorConfig.editorconfig
+H:\compilador\obj\Debug\net6.0-windows\compilador.AssemblyInfoInputs.cache
+H:\compilador\obj\Debug\net6.0-windows\compilador.AssemblyInfo.cs
+H:\compilador\obj\Debug\net6.0-windows\compilador.csproj.CoreCompileInputs.cache
+H:\compilador\obj\Debug\net6.0-windows\compilador.dll
+H:\compilador\obj\Debug\net6.0-windows\refint\compilador.dll
+H:\compilador\obj\Debug\net6.0-windows\compilador.pdb
+H:\compilador\bin\Debug\net6.0-windows\compilador.exe
+H:\compilador\bin\Debug\net6.0-windows\compilador.deps.json
+H:\compilador\bin\Debug\net6.0-windows\compilador.runtimeconfig.json
+H:\compilador\bin\Debug\net6.0-windows\compilador.dll
+H:\compilador\bin\Debug\net6.0-windows\compilador.pdb
+H:\compilador\obj\Debug\net6.0-windows\compilador.genruntimeconfig.cache
+H:\compilador\obj\Debug\net6.0-windows\ref\compilador.dll
+F:\compilador\bin\Debug\net6.0-windows\compilador.exe
+F:\compilador\bin\Debug\net6.0-windows\compilador.deps.json
+F:\compilador\bin\Debug\net6.0-windows\compilador.runtimeconfig.json
+F:\compilador\bin\Debug\net6.0-windows\compilador.dll
+F:\compilador\bin\Debug\net6.0-windows\compilador.pdb
+F:\compilador\obj\Debug\net6.0-windows\compilador.csproj.AssemblyReference.cache
+F:\compilador\obj\Debug\net6.0-windows\compilador.Form1.resources
+F:\compilador\obj\Debug\net6.0-windows\compilador.csproj.GenerateResource.cache
+F:\compilador\obj\Debug\net6.0-windows\compilador.GeneratedMSBuildEditorConfig.editorconfig
+F:\compilador\obj\Debug\net6.0-windows\compilador.AssemblyInfoInputs.cache
+F:\compilador\obj\Debug\net6.0-windows\compilador.AssemblyInfo.cs
+F:\compilador\obj\Debug\net6.0-windows\compilador.csproj.CoreCompileInputs.cache
+F:\compilador\obj\Debug\net6.0-windows\compilador.dll
+F:\compilador\obj\Debug\net6.0-windows\refint\compilador.dll
+F:\compilador\obj\Debug\net6.0-windows\compilador.pdb
+F:\compilador\obj\Debug\net6.0-windows\compilador.genruntimeconfig.cache
+F:\compilador\obj\Debug\net6.0-windows\ref\compilador.dll
+D:\Users\alfon\Downloads\compilador\bin\Debug\net6.0-windows\compilador.exe
+D:\Users\alfon\Downloads\compilador\bin\Debug\net6.0-windows\compilador.deps.json
+D:\Users\alfon\Downloads\compilador\bin\Debug\net6.0-windows\compilador.runtimeconfig.json
+D:\Users\alfon\Downloads\compilador\bin\Debug\net6.0-windows\compilador.dll
+D:\Users\alfon\Downloads\compilador\bin\Debug\net6.0-windows\compilador.pdb
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\compilador.csproj.AssemblyReference.cache
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\compilador.Form1.resources
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\compilador.csproj.GenerateResource.cache
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\compilador.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\compilador.AssemblyInfoInputs.cache
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\compilador.AssemblyInfo.cs
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\compilador.csproj.CoreCompileInputs.cache
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\compilador.dll
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\refint\compilador.dll
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\compilador.pdb
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\compilador.genruntimeconfig.cache
+D:\Users\alfon\Downloads\compilador\obj\Debug\net6.0-windows\ref\compilador.dll
