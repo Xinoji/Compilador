@@ -6,25 +6,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Linq;
+using compilador;
 
-  internal class automotaCompilador
+internal class automotaCompilador
   {
+    #region reservada-caracter
     //lista de operadores aritmeticos
+    private static string[] Entrada = {
+        "readChar", "readLine"
+    };
+
+    private static string[] Salida = {
+        "write", "writeLine"
+    };
+
     private static string[] aritmeticos = {
-        "++", "--", "+"  , "-"  , "*"  , "/"  , "%"  , "**" , "//", "("  , ")", "="
+        "+"  , "-"  , "*"  , "/"  , "%"  , "**" , "//", "="
+    };
+
+    private static string[] operadorBloque = { 
+        "(", ")", "{", "}", "[", "]"
     };
 
     //lista de selectiva simple
     private static string[] selectiva_simple = {
-        "if", "else", "else if"
+        "if", "else"
     };
 
     private static string[] selectiva_multiple = {
-        "switch", "case", "select"
+        "switch", "case", "select", "default"
     };
 
     private static string[] ciclos = {
-        "for", "while", "foreach", "dowhile"
+        "for", "while", "foreach"
     };
 
     private static string[] booleanos = {
@@ -35,7 +49,10 @@ using System.Linq;
         "<<"  , ">>" , "<"  , ">"  , "<="  , ">=" , "==", "!="
     };
 
-    //lista de palabras reservadas, falta acompletar palabras para ser las 30
+    private static string[] tipo = {
+        "bool","int", "char", "void"
+    };
+    //lista de palabras reservadas
     private static string[] reservadas = 
     {
         "asm", "auto", "bool", "break", "case", "catch", "char", "class", "const", "const_cast",
@@ -43,7 +60,7 @@ using System.Linq;
         "export", "extern", "false", "float", "for", "friend", "goto", "if", "inline", "int", "long",
         "mutable", "namespace", "new", "operator", "private", "protected", "public", "register", "reinterpret_cast",
         "return", "short", "signed", "sizeof", "static", "static_cast", "struct", "switch", "template", "this",
-        "throw", "true", "try", "typedef", "typeid", "typename", "union", "unsigned", "using", "virtual", "void", "volatile", "wchar_t", "while"
+        "throw", "true", "try", "typedef", "typeid", "typename", "union", "unsigned", "using", "virtual", "volatile", "wchar_t", "while"
     };
 
     //lista de signos permitidos
@@ -56,10 +73,16 @@ using System.Linq;
         "&=" , "^=" , "|=" , ","  , "#"  , "##" ,
         "<:" , ":>" , "<%" , "%>" , "%:%:"
     };
-
+    #endregion
     //lista dinamica de los ID que se va a encontrar
     private List<string> id = new List<string>();
-    
+    public Queue<(byte token, string valor)> tokens { get; }
+
+    public automotaCompilador() 
+    {
+        tokens = new Queue<(byte, string)>();
+    }
+
     //repite al buffer hasta encontrar un caracter en especifico
     private string repeatUntil(char c, ref string input) {
         string buffer = "";
@@ -84,59 +107,66 @@ using System.Linq;
     //comparar para saber que tipo es el signo usuado
     byte Compare(string input)
     {
+        if (tipo.Contains(input))
+            return TknType.DataType;
+
+        if (Entrada.Contains(input))
+            return TknType.Entrada;
+
+        if (Salida.Contains(input))
+            return TknType.Salida;
+
+        if (operadorBloque.Contains(input))
+            return TknType.Bloque;
         //comprueba si es un signo de los registrados
         if (signos.Contains(input))
-            return 5;
+            return TknType.Simbolo;
 
         if (aritmeticos.Contains(input))
-            return 7;
+            return TknType.OpArit;
 
         if (selectiva_simple.Contains(input))
-            return 8;
+            return TknType.SimIf;
         
         if (selectiva_multiple.Contains(input))
-            return 9;
+            return TknType.MulIf;
 
         if (ciclos.Contains(input))
-            return 10;
+            return TknType.Loop;
 
         if (booleanos.Contains(input))
-            return 11;
+            return TknType.OpBool;
 
         if (operadores_relacion.Contains(input))
-            return 12;
+            return TknType.OpRelacion;
 
         //comprueba si empieza por caracter para ver si es reservada, ID nuevo o ID registrado 
         if (new Regex(@"^[a-zA-Z_]$").IsMatch(input[0].ToString()))
         {
             //verifica si es una palabra reservada
             if (reservadas.Contains(input))
-                return 0;
-            
-            //verifica si es un ID que aperecio previo
-            if (id.Contains(input))
-                return 2;
+                return TknType.Reservada;
 
             //verfica si cumple con el formato de ID para ser id nuevo
             if (new Regex(@"^\w{0,64}$").IsMatch(input))
             {
                 id.Add(input);
-                return 1;
+                return TknType.ID;
             }
 
 
         }
         //verifica si es una constante numerica
         if (new Regex(@"^\d(x[a-fA-f0-9]*|\.?)[0-9]*$").IsMatch(input))
-            return 3;
+            return TknType.Constante;
 
         //verifica si es una cadena que se encuentra entre comillas
-        if (new Regex($@"{"\""}.*{"\""}").IsMatch(input[0].ToString()))
-            return 4;   
+        if (new Regex($@"\{'"'}.*\{'"'}").IsMatch(input.ToString()))
+            return TknType.Cadena;   
 
         //verifica si es un encabezado
         if (new Regex($@"<.*>").IsMatch(input[0].ToString()))
-            return 6;
+            return TknType.Encabezado;
         
         //en caso contrario retorna desconocido
         return 255;
@@ -197,7 +227,7 @@ using System.Linq;
                 case '\'':
                     bufferCheck(queue, ref buffer);
 
-                    queue.Enqueue('"' + repeatUntil('"', ref input));
+                    queue.Enqueue(repeatUntil('"', ref input));
                     input = input.Substring(1);
                     break;
 
@@ -260,35 +290,39 @@ using System.Linq;
             tipo = Compare(buffer);
                 switch (tipo)
                 {
-                    case 0: filtro = "Reservada";               break;
-                    case 1: filtro = "ID nuevo";                break;
-                    case 2: filtro = "ID";                      break;
-                    case 3: filtro = "Constante";               break;
-                    case 4: filtro = "Operadores de relacion";  break;
-                    case 5: filtro = "Simbolo";                 break;
-                    case 6: filtro = "Encabezado";              break;
-                    case 7: filtro = "Operador aritmetico";     break;
-                    case 8: filtro = "Selectiva simple";        break;
-                    case 9: filtro = "Selectiva multiple";      break;
-                    case 10: filtro = "Ciclo";                  break;
-                    case 11: filtro = "Operador booleano";      break;
-                    case 12: filtro = "Operador de relación";   break;
-                    default:filtro = "Desconocido";             break;
+                    case TknType.Reservada: filtro = "Reservada";               break;
+                    case TknType.ID:        filtro = "ID";                      break;
+                    case TknType.Constante: filtro = "Constante";               break;
+                    case TknType.Cadena:    filtro = "Cadena";                  break;
+                    case TknType.Simbolo:   filtro = "Simbolo";                 break;
+                    case TknType.Encabezado:filtro = "Encabezado";              break;
+                    case TknType.OpArit:    filtro = "Operador aritmetico";     break;
+                    case TknType.SimIf:     filtro = "Selectiva simple";        break;
+                    case TknType.MulIf:     filtro = "Selectiva multiple";      break;
+                    case TknType.Loop:      filtro = "Ciclo";                   break;
+                    case TknType.OpBool:    filtro = "Operador booleano";       break;
+                    case TknType.OpRelacion:filtro = "Operador de relación";    break;
+                    case TknType.Bloque:     filtro = "Bloque"; break;
+                    case TknType.Desconocido:
+                    default:                filtro = "Desconocido";             break;
 
                 }
             msg += $"El Valor \"{buffer}\" es {filtro}\n";
+            tokens.Enqueue((tipo, buffer));
            // state = transition[state, tipo];
         }
-        
+        tokens.Enqueue((TknType.EOF, "\0"));
         return accepted[state];
         
         }
 
-
+    
     public void reset() 
     {
+        
         state = 0;
         msg = "";
+        tokens.Clear();
         id.Clear();
     }
   }
