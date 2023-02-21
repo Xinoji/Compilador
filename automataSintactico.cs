@@ -85,9 +85,8 @@ namespace compilador
             msg += "<Programa>\n";
             if (tokens.Peek().token == TknType.EOF) 
             {
-                msg += ErrorSyn.errorSyn(ErrorSyn.EOF);
-                valido = false;
-                return;
+                
+                throw new Exception(ErrorSyn.errorSyn(ErrorSyn.EOF));
             }
             while (tokens.Peek().token != TknType.EOF)
                 sentencia();
@@ -110,7 +109,7 @@ namespace compilador
         void sentencia() 
         {
             if (tokens.Peek().token == TknType.EOF)
-                return;
+                throw new Exception ("Error: Se esperaba Sentencia");
             bool puntoComa = false;
             msg += "<Sentencia>\n";
 
@@ -188,8 +187,7 @@ namespace compilador
                 case "foreach":
                     Parentesis(variable);
                     sentencia();
-                    break;
-                                
+                    break;   
             }
         }
 
@@ -342,7 +340,7 @@ namespace compilador
 
             (byte token, string value) = tokens.Dequeue();
 
-            if (value != ")")
+            if (token != TknType.Cadena)
                 throw new Exception(ErrorSyn.errorSyn(ErrorSyn.Parentesis));
             
             msg += "<Cadena>\n";
@@ -383,8 +381,8 @@ namespace compilador
             
             msg += "<Mas_Terminos>";
             
-            if (tokens.Peek().token != TknType.OpArit |
-                tokens.Peek().token != TknType.OpBool )
+            if (tokens.Peek().token != TknType.OpArit &
+                tokens.Peek().token != TknType.OpRelacion )
                 return;
 
             tokens.Dequeue();
@@ -431,9 +429,11 @@ namespace compilador
         {
             if (tokens.Peek().token == TknType.EOF)
                 return;
-            byte token = tokens.Dequeue().token;
+            byte token = tokens.Peek().token;
             if (token != TknType.Constante)
                 throw new Exception(ErrorSyn.errorSyn(ErrorSyn.Constante));
+
+            tokens.Dequeue();
             msg += "<Constante>";
         }
         void Parentesis(Action Expresion) 
