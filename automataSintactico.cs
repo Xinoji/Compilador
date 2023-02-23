@@ -110,11 +110,18 @@ namespace compilador
         {
             if (tokens.Peek().token == TknType.EOF)
                 throw new Exception ("Error: Se esperaba Sentencia");
+
             bool puntoComa = false;
             msg += "<Sentencia>\n";
 
 
-            (byte token, string value) = tokens.Dequeue();
+            (byte token, string value) = tokens.Peek();
+
+            if (value == "}")
+                return;
+
+            tokens.Dequeue();
+
             if (value == ";")
                 return;
 
@@ -168,7 +175,7 @@ namespace compilador
             variable();
             if (tokens.Peek().valor != "=")
                 return;
-            msg += "<Asignacion>";
+            asignacion();
         }
 
         private void Bucle(string value)
@@ -178,7 +185,7 @@ namespace compilador
                 return;
             msg += "<Bucle>\n";
             switch (value) 
-            {
+            { 
                 case "for": Parentesis(For); break;
                 case "while":
                     Parentesis(expresion);
@@ -379,7 +386,7 @@ namespace compilador
             if (tokens.Peek().token == TknType.EOF)
                 return;
             
-            msg += "<Mas_Terminos>";
+             msg += "<Mas_Terminos>";
             
             if (tokens.Peek().token != TknType.OpArit &
                 tokens.Peek().token != TknType.OpRelacion )
