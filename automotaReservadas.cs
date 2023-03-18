@@ -12,13 +12,7 @@ internal class automotaCompilador
   {
     #region reservada-caracter
     //lista de operadores aritmeticos
-    private static string[] Entrada = {
-        "readChar", "readLine"
-    };
 
-    private static string[] Salida = {
-        "write", "writeLine"
-    };
 
     private static string[] aritmeticos = {
         "+"  , "-"  , "*"  , "/"  , "%"  , "**" , "//", "="
@@ -38,7 +32,7 @@ internal class automotaCompilador
     };
 
     private static string[] ciclos = {
-        "for", "while", "foreach"
+        "for", "while"
     };
 
     private static string[] booleanos = {
@@ -60,7 +54,8 @@ internal class automotaCompilador
         "export", "extern", "false", "float", "for", "friend", "goto", "if", "inline", "int", "long",
         "mutable", "namespace", "new", "operator", "private", "protected", "public", "register", "reinterpret_cast",
         "return", "short", "signed", "sizeof", "static", "static_cast", "struct", "switch", "template", "this",
-        "throw", "true", "try", "typedef", "typeid", "typename", "union", "unsigned", "using", "virtual", "volatile", "wchar_t", "while"
+        "throw", "true", "try", "typedef", "typeid", "typename", "union", "unsigned", "using", "virtual", "volatile", "wchar_t", "while",
+        "readChar", "readLine","write", "writeLine"
     };
 
     //lista de signos permitidos
@@ -109,12 +104,6 @@ internal class automotaCompilador
     {
         if (tipo.Contains(input))
             return TknType.DataType;
-
-        if (Entrada.Contains(input))
-            return TknType.Entrada;
-
-        if (Salida.Contains(input))
-            return TknType.Salida;
 
         if (operadorBloque.Contains(input))
             return TknType.Bloque;
